@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent {
+  userModel = {
+    nombre: '',
+    apellido:'',
+    email:'',
+    comentario:'',
+  }
 
 }
