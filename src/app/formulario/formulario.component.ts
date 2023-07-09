@@ -13,4 +13,7 @@ export class FormularioComponent {
     comentario:'',
   }
 
+  enviarInfoForm(): void {
+
+  }
 }
