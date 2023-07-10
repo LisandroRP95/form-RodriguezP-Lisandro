@@ -1,25 +1,30 @@
 <main class="negro container">
-    <form>
+    <form [formGroup]="userModel">
         <div class="row">
             <div class="col">
                 <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                <input [(ngModel)]="userModel.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Nombre">
+                <input formControlName="nombre" name="nombre" type="text" class="form-control is-invalid" [class.is-invalid]="nombreControl.touched && nombreControl.invalid" placeholder="Nombre" aria-label="Nombre">
+                <div class="invalid-feedback">Nombre requerido</div>
             </div>
             <div class="col">
                  <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-                 <input [(ngModel)]="userModel.apellido" name="apellido" type="text" class="form-control" placeholder="Apellido" aria-label="Apellido">
+                 <input formControlName="apellido" name="apellido" type="text" class="form-control is-invalid" [class.is-invalid]="apellidoControl.touched && apellidoControl.invalid" placeholder="Apellido" aria-label="Apellido">
+                 <div class="invalid-feedback">Apellido requerido</div>
             </div>
         </div><br>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Direccion E-mail</label>
-            <input [(ngModel)]="userModel.email" name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="mail@casilla.com">
+            <input formControlName="email" name="email" type="email" class="form-control is-invalid" [class.is-invalid]="emailControl.touched && emailControl.invalid" id="exampleFormControlInput1" placeholder="mail@casilla.com">
+            <div class="invalid-feedback">El email es requerido</div>
         </div><br>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Dejanos tu comentario</label>
-            <textarea [(ngModel)]="userModel.comentario" name="comentario" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escriba aqui"></textarea><br>
-            <button (click)="enviarInfoForm()" type="button" class="btn btn-secondary">Enviar</button>
+            <textarea formControlName="comentario" name="comentario" class="form-control is-invalid" [class.is-invalid]="comentarioControl.touched && comentarioControl.invalid" id="exampleFormControlTextarea1" rows="3" placeholder="Escriba aqui">
+            </textarea>
+            <div class="invalid-feedback">Un comentario es requerido</div><br>
+            <button  type="button" class="btn btn-secondary">Enviar</button>
         </div>
     </form>
 
-    <pre>{{userModel | json}}</pre>
+    <pre>{{userModel.value | json}}</pre>
 </main>
